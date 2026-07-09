@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Full Body 3D Pure CSS Pikachu</title>
+  <title>Strictly 2D Full Body Pikachu - Static</title>
   <style>
     /* --- Presentation Setup --- */
     body {
       margin: 0;
       padding: 0;
-      background: radial-gradient(circle at center, #ffffff 0%, #e2e8f0 100%);
+      background-color: #e2e8f0;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,18 +17,18 @@
       overflow: hidden;
     }
 
-    /* Floor Ambient Shadow */
+    /* Flat 2D Floor Shadow */
     .stage-shadow {
       position: absolute;
-      bottom: 5%;
-      width: 360px;
-      height: 40px;
-      background: radial-gradient(ellipse at center, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0) 70%);
+      bottom: 6%;
+      width: 340px;
+      height: 25px;
+      background-color: rgba(0, 0, 0, 0.15);
       border-radius: 50%;
       z-index: 1;
     }
 
-    /* --- Animated Container --- */
+    /* --- Main Canvas --- */
     .pikachu-canvas {
       position: relative;
       width: 500px;
@@ -38,104 +38,100 @@
       justify-content: center;
       align-items: center;
       z-index: 2;
-      transform: translateY(30px);
-      animation: gentle-breathe 4s ease-in-out infinite alternate;
+      transform: translateY(15px);
     }
 
-    /* --- LIGHTNING TAIL --- */
+    /* --- FLAT LIGHTNING TAIL --- */
     .tail-container {
       position: absolute;
-      left: 40px;
+      left: 35px;
       bottom: 160px;
       width: 200px;
       height: 300px;
       z-index: 1;
       transform-origin: bottom right;
       transform: rotate(-10deg);
-      animation: tail-wag 4s ease-in-out infinite alternate;
     }
 
-    /* Tail Segment Master Styling */
+    /* Flat Tail Segments with Clean Outlines */
     .tail-part {
       position: absolute;
-      background: #F8D030;
-      box-shadow: inset -6px -6px 15px rgba(160, 110, 5, 0.4);
+      background-color: #F8D030;
+      border: 6px solid #232323; /* Outlines match classic design constraints */
+      box-sizing: border-box;
     }
 
-    /* Base Segment (Attaches to body) */
     .tail-part.base {
       bottom: 0;
       right: 0;
-      width: 30px;
-      height: 70px;
-      background: linear-gradient(to top, #A25B1F 40%, #F8D030 41%); /* Brown base */
+      width: 32px;
+      height: 75px;
+      background: linear-gradient(to top, #A25B1F 45%, #F8D030 46%); /* Sharp 2D color split */
       transform: rotate(45deg);
-      border-radius: 0 0 5px 5px;
+      border-radius: 0 0 4px 4px;
     }
 
     .tail-part.seg1 {
-      bottom: 45px;
-      right: 15px;
-      width: 65px;
-      height: 35px;
+      bottom: 48px;
+      right: 12px;
+      width: 70px;
+      height: 38px;
       transform: rotate(10deg);
+      border-bottom: none;
     }
 
     .tail-part.seg2 {
-      bottom: 70px;
-      right: 55px;
-      width: 40px;
-      height: 90px;
+      bottom: 72px;
+      right: 54px;
+      width: 38px;
+      height: 95px;
       transform: rotate(-5deg);
     }
 
     .tail-part.seg3 {
-      bottom: 145px;
-      right: 70px;
-      width: 100px;
-      height: 50px;
+      bottom: 152px;
+      right: 68px;
+      width: 105px;
+      height: 52px;
       transform: rotate(5deg);
     }
 
-    /* Massive Iconic Tip */
+    /* Flat Geometric Tip */
     .tail-part.tip {
-      bottom: 180px;
+      bottom: 185px;
       right: 110px;
-      width: 130px;
-      height: 110px;
-      background: radial-gradient(circle at 70% 30%, #FFF066 0%, #F8D030 60%, #D4A200 100%);
+      width: 135px;
+      height: 115px;
       clip-path: polygon(100% 100%, 40% 100%, 0% 40%, 45% 0%, 100% 45%);
-      box-shadow: inset -10px -5px 20px rgba(160, 110, 5, 0.4);
+      border: none;
     }
 
-    /* --- THE HEAD --- */
+    /* --- THE HEAD (Strictly 2D Flat Shape) --- */
     .pikachu-head {
       position: relative;
       width: 360px;
       height: 310px;
-      background: radial-gradient(circle at 35% 35%, #FFF066 0%, #F8D030 45%, #E5B310 85%, #C29300 100%);
+      background-color: #F8D030;
+      border: 6px solid #232323; /* Line weight increased to stand out */
       border-radius: 50% 50% 46% 46% / 62% 62% 38% 38%;
-      box-shadow: 
-        inset -15px -15px 35px rgba(160, 110, 5, 0.5), 
-        inset 15px 15px 25px rgba(255, 255, 255, 0.6),
-        0 15px 25px rgba(0, 0, 0, 0.1);
+      box-sizing: border-box;
       z-index: 4;
     }
 
-    /* --- EARS --- */
+    /* --- CLASSIC ROUNDED EARS --- */
     .ear {
       position: absolute;
-      top: -120px;
-      width: 85px;
-      height: 210px;
-      background: radial-gradient(circle at 50% 40%, #FFF066 0%, #F8D030 60%, #D4A200 100%);
+      top: -125px;
+      width: 88px;
+      height: 215px;
+      background-color: #F8D030;
+      border: 6px solid #232323;
       border-radius: 50% 50% 45% 45% / 75% 75% 25% 25%;
       overflow: hidden;
-      box-shadow: 
-        inset -10px -5px 15px rgba(160, 110, 5, 0.4),
-        inset 8px 10px 15px rgba(255, 255, 255, 0.5);
+      box-sizing: border-box;
     }
 
+    /* Flat Black Ear Tip */
     .ear::before {
       content: '';
       position: absolute;
@@ -143,33 +139,30 @@
       left: -20px;
       width: 130px;
       height: 85px;
-      background: linear-gradient(135deg, #2b2b2b 0%, #000000 70%);
+      background-color: #232323;
     }
 
     .ear.left {
-      left: 15px;
-      transform-origin: bottom right;
+      left: 10px;
       transform: rotate(-32deg);
-      animation: left-ear-twitch 7s ease-in-out infinite;
     }
 
     .ear.right {
-      right: 15px;
-      transform-origin: bottom left;
+      right: 10px;
       transform: rotate(32deg);
-      animation: right-ear-twitch 7s ease-in-out infinite 1.5s;
     }
 
-    /* --- FACE DETAILS --- */
+    /* --- FLAT FACE DETAILS --- */
     .eye {
       position: absolute;
       top: 110px;
       width: 52px;
       height: 52px;
-      background: radial-gradient(circle at 40% 40%, #3a3a3a 0%, #151515 70%, #000000 100%);
+      background-color: #232323;
       border-radius: 50%;
     }
 
+    /* Crisp 2D Highlights */
     .eye::after {
       content: '';
       position: absolute;
@@ -177,7 +170,7 @@
       left: 8px;
       width: 18px;
       height: 18px;
-      background: white;
+      background-color: #ffffff;
       border-radius: 50%;
     }
 
@@ -188,39 +181,41 @@
       right: 11px;
       width: 8px;
       height: 8px;
-      background: rgba(255, 255, 255, 0.8);
+      background-color: #ffffff;
       border-radius: 50%;
     }
 
     .eye.left { left: 75px; }
     .eye.right { right: 75px; }
 
+    /* Flat Red Cheeks Placed High and Wide */
     .cheek {
       position: absolute;
       top: 155px;
       width: 72px;
       height: 72px;
-      background: radial-gradient(circle at 40% 40%, #FF5959 0%, #E62829 65%, #B30E10 100%);
+      background-color: #E62829;
+      border: 6px solid #232323;
       border-radius: 50%;
-      box-shadow: 
-        inset -6px -6px 12px rgba(100, 0, 5, 0.4),
-        0 6px 12px rgba(180, 40, 40, 0.2);
+      box-sizing: border-box;
     }
 
-    .cheek.left { left: 10px; }
-    .cheek.right { right: 10px; }
+    .cheek.left { left: 8px; }
+    .cheek.right { right: 8px; }
 
+    /* Flat Triangle Nose */
     .nose {
       position: absolute;
       top: 156px;
       left: 50%;
       width: 14px;
       height: 9px;
-      background: #232323;
+      background-color: #232323;
       transform: translateX(-50%);
       border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
     }
 
+    /* Crisp Outlined Mouth Container */
     .mouth-container {
       position: absolute;
       top: 168px;
@@ -237,8 +232,9 @@
       width: 46px;
       height: 32px;
       border: 6px solid #232323;
-      background: #F8D030;
+      background-color: #F8D030;
       border-radius: 0 0 50% 50%;
+      box-sizing: border-box;
     }
 
     .lip.left { left: 5px; border-right-width: 4px; transform: rotate(-2deg); }
@@ -251,90 +247,84 @@
       transform: translateX(-50%);
       width: 48px;
       height: 44px;
-      background: radial-gradient(circle at top, #B33235 40%, #7A191B 100%);
+      background-color: #B33235;
       border-radius: 0 0 50% 50%;
       overflow: hidden;
       border: 6px solid #232323;
       border-top: none;
+      box-sizing: border-box;
     }
 
     .open-mouth::after {
       content: '';
       position: absolute;
-      bottom: -8px;
+      bottom: -4px;
       left: 50%;
       transform: translateX(-50%);
-      width: 44px;
-      height: 28px;
-      background: radial-gradient(circle at center, #FFA6A8 0%, #EA787A 70%, #C45052 100%);
+      width: 42px;
+      height: 26px;
+      background-color: #EA787A;
+      border: 5px solid #232323;
       border-radius: 50% 50% 0 0;
+      box-sizing: border-box;
     }
 
-    /* --- CHUBBY BODY --- */
+    /* --- FLAT CHUBBY BODY --- */
     .pikachu-body {
       position: relative;
       width: 320px;
       height: 290px;
-      background: radial-gradient(circle at 35% 20%, #FFF066 0%, #F8D030 50%, #D6A205 85%, #B38200 100%);
+      background-color: #F8D030;
+      border: 6px solid #232323;
       border-radius: 50% 50% 42% 42% / 45% 45% 55% 55%;
-      margin-top: -70px; /* Seamless overlap behind chin */
-      box-shadow: 
-        inset -15px -15px 35px rgba(140, 95, 5, 0.6),
-        inset 15px 10px 25px rgba(255, 255, 255, 0.4),
-        0 15px 25px rgba(0,0,0,0.12);
+      margin-top: -70px;
+      box-sizing: border-box;
       z-index: 3;
     }
 
-    /* --- ARMS --- */
+    /* --- FLAT ARMS --- */
     .arm {
       position: absolute;
       top: 60px;
       width: 65px;
       height: 110px;
-      background: radial-gradient(circle at 50% 30%, #FFF066 10%, #F8D030 60%, #C29300 100%);
+      background-color: #F8D030;
+      border: 6px solid #232323;
       border-radius: 40% 40% 45% 45% / 30% 30% 70% 70%;
-      box-shadow: 
-        inset -4px -4px 12px rgba(140, 95, 5, 0.4),
-        -2px 6px 10px rgba(0,0,0,0.08);
+      box-sizing: border-box;
     }
 
     .arm.left {
-      left: 35px;
+      left: 30px;
       transform: rotate(35deg);
-      transform-origin: top center;
-      animation: wave-left 4s ease-in-out infinite alternate;
     }
 
     .arm.right {
-      right: 35px;
+      right: 30px;
       transform: rotate(-35deg);
-      transform-origin: top center;
     }
 
-    /* Little Claws / Fingers */
     .arm::after {
       content: '';
       position: absolute;
-      bottom: -3px;
+      bottom: -2px;
       left: 50%;
       transform: translateX(-50%);
       width: 35px;
       height: 10px;
-      /* Generates jagged little fingertips */
-      background: radial-gradient(circle, #F8D030 60%, transparent 65%);
+      background: radial-gradient(circle, #232323 60%, transparent 65%);
       background-size: 8px 10px;
     }
 
-    /* --- LEGS & FEET --- */
+    /* --- FLAT LEGS & FEET --- */
     .leg {
       position: absolute;
-      bottom: -10px;
+      bottom: -12px;
       width: 95px;
       height: 55px;
-      background: radial-gradient(circle at 50% 20%, #FFF066 0%, #F8D030 60%, #B38200 100%);
-      box-shadow: 
-        inset -5px -5px 15px rgba(140, 95, 5, 0.5),
-        0 8px 12px rgba(0,0,0,0.12);
+      background-color: #F8D030;
+      border: 6px solid #232323;
+      box-sizing: border-box;
       z-index: 4;
     }
 
@@ -350,56 +340,26 @@
       transform: rotate(5deg);
     }
 
-    /* Long Iconic Toes */
     .leg::after {
       content: '';
       position: absolute;
       bottom: 4px;
       width: 45px;
       height: 12px;
-      background: radial-gradient(circle, #C29300 30%, transparent 35%);
+      background: radial-gradient(circle, #232323 30%, transparent 35%);
       background-size: 15px 12px;
     }
-    .leg.left::after { left: 15px; }
-    .leg.right::after { right: 15px; }
-
-
-    /* --- ADVANCED CORE KEYFRAMES --- */
-    @keyframes gentle-breathe {
-      0% { transform: translateY(20px) scale(1); }
-      100% { transform: translateY(12px) scale(1.015) scaleY(0.99); }
-    }
-
-    @keyframes left-ear-twitch {
-      0%, 90%, 94%, 98%, 100% { transform: rotate(-32deg); }
-      92%, 96% { transform: rotate(-37deg); }
-    }
-
-    @keyframes right-ear-twitch {
-      0%, 88%, 92%, 96%, 100% { transform: rotate(32deg); }
-      90%, 94% { transform: rotate(37deg); }
-    }
-
-    @keyframes tail-wag {
-      0% { transform: rotate(-10deg); }
-      100% { transform: rotate(-5deg) translateY(-3px); }
-    }
-
-    @keyframes wave-left {
-      0% { transform: rotate(35deg); }
-      100% { transform: rotate(42deg); }
-    }
+    .leg.left::after { left: 12px; }
+    .leg.right::after { right: 12px; }
   </style>
 </head>
 <body>
 
-  <!-- Floor Reflection Shadow -->
   <div class="stage-shadow"></div>
 
-  <!-- Master Animation Vector Canvas -->
   <div class="pikachu-canvas">
     
-    <!-- Dynamic Lightning Bolt Tail -->
+    <!-- Flat Lightning Bolt Tail -->
     <div class="tail-container">
       <div class="tail-part tip"></div>
       <div class="tail-part seg3"></div>
@@ -408,7 +368,7 @@
       <div class="tail-part base"></div>
     </div>
 
-    <!-- Volumetric Head Unit -->
+    <!-- Outlined Head -->
     <div class="pikachu-head">
       <div class="ear left"></div>
       <div class="ear right"></div>
@@ -424,7 +384,7 @@
       <div class="cheek right"></div>
     </div>
 
-    <!-- Chubby Torso Assembly -->
+    <!-- Outlined Torso -->
     <div class="pikachu-body">
       <div class="arm left"></div>
       <div class="arm right"></div>
